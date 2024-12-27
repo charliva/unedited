@@ -33,7 +33,7 @@ export default function Footer() {
                 { name: 'Privacy', path: '/privacy', icon: null },
                 { name: 'LinkedIn', path: 'https://www.linkedin.com/in/tjalling-van-abbema-8430811a8/', icon: <LinkedInLogoIcon className="w-4 h-4" /> },
                 { name: 'GitHub', path: 'https://github.com/charliva', icon: <GitHubLogoIcon className="w-4 h-4" /> },
-                { name: 'Mail', path: 'ailto:charlie@unedited.site?&subject=Work together&body=Hello Charlie, I would like to work with you on a project.', icon: <EnvelopeClosedIcon className="w-4 h-4" /> },
+                { name: 'Mail', path: 'mailto:charlie@unedited.site?&subject=Work together&body=Hello Charlie, I would like to work with you on a project.', icon: <EnvelopeClosedIcon className="w-4 h-4" /> },
                 { name: 'BlueSky', path: 'https://bsky.app/profile/unedited.site', icon: <CloudIcon className="w-4 h-4" /> }
                 ].map((item) => (
                 <Link
