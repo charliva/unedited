@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="flex justify-between items-center text-sm text-gray-500">
             <p>© {new Date().getFullYear()} UNEDITED. Simple. Elegant. Effective.</p>
             <div className="flex gap-4">
-              {['Privacy', 'Terms'].map((item) => (
+              {['Privacy'].map((item) => (
                 <Link
                   key={item}
                   href={`/${item.toLowerCase()}`}
