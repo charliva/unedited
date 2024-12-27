@@ -32,7 +32,7 @@ export function ServiceCard({
     >
       <div className="flex flex-col items-start space-y-4">
         <div className="p-3 rounded-full bg-primary/10">
-          <Icon className="w-6 h-6 text-primary dark:text-primary-light" />
+          <Icon className="w-6 h-6" />
         </div>
         <h3 className="text-xl font-bold text-neutral-800 dark:text-neutral-100">{title}</h3>
         <p className="text-muted-foreground dark:text-neutral-400">{description}</p>

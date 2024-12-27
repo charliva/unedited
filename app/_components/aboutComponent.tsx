@@ -70,7 +70,8 @@ export default function AboutMe() {
             I'm Charlie, a 15-year-old freelance web and application developer
             based in Denmark. My curiousity for coding came early, at just 5
             years old I was coding behind my parents iMac building python
-            applications and solving basic math problems.
+            applications and solving basic math problems. Now I build full-stack
+            and native applications for clients around the world.
           </p>
           <p className="text-lg leading-relaxed">
             Specializing in Next.js and Tailwind CSS, I create responsive
