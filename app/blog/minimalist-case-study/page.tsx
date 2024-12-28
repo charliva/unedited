@@ -18,13 +18,15 @@ export default function MinimalistDesignCaseStudy() {
       className={`${jetBrainsMono.className} container mx-auto px-4 py-12 max-w-3xl`}
     >
       <ScrollAnimation />
-      <Image
-        src="/blog-minimalist-case-study.png"
-        alt="Minimalist Design"
-        width={800}
-        height={400}
-        className="rounded-lg object-cover w-full h-48 mb-8"
-      />
+      <div className="relative aspect-video mb-8">
+        <Image
+          src="/blog-minimalist-case-study.png"
+          alt="Minimalist Design"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="rounded-lg object-cover"
+        />
+      </div>
       <h1 className="text-4xl font-bold tracking-tight mb-8">
         Case Study: Minimalist Design
       </h1>

@@ -36,9 +36,10 @@ const TypewriterText = ({
   );
 };
 
-export default function PortfolioHero() {
+export default function OptimizedPortfolioHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentLine, setCurrentLine] = useState(0);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const lines = [
     "Imagine a new web, minimalistic and creative.",
     "Innovative, aesthetic and useful.",
@@ -55,12 +56,26 @@ export default function PortfolioHero() {
     "text-xl md:text-xl",
   ];
 
+  useEffect(() => {
+    if (currentLine >= lines.length) {
+      setIsAnimationComplete(true);
+    }
+  }, [currentLine, lines.length]);
+
   return (
     <div
       ref={containerRef}
       className="relative w-full h-[90vh] min-h-[600px] overflow-y-auto p-4 md:p-8 z-0"
     >
       <div className="absolute inset-0 flex flex-col items-start justify-center max-w-4xl mx-auto space-y-8 z-0">
+        {lines.map((line, index) => (
+          <p key={index} className={`${lineClasses[index]} ${isAnimationComplete ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
+            {line}
+          </p>
+        ))}
+      </div>
+
+      <div className="absolute inset-0 flex flex-col items-start justify-center max-w-4xl mx-auto space-y-8 z-10">
         {lines.map((line, index) => (
           <p key={index} className={lineClasses[index]}>
             {index < currentLine ? (

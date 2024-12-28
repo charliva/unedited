@@ -34,13 +34,16 @@ export function BlogCard({
           alt={title}
           width={800}
           height={400}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover w-full h-48 transition-transform duration-300 ease-in-out group-hover:scale-105 rounded-md"
         />
       </div>
       <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
         {title}
       </h3>
-      <p className="text-sm text-muted-foreground font-semibold">{description}</p>
+      <p className="text-sm text-muted-foreground font-semibold">
+        {description}
+      </p>
       <p className="text-sm text-muted-foreground font-semibold">{date}</p>
     </Link>
   );
