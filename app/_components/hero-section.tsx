@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import { motion } from "motion/react";
 
 const TypewriterText = ({
   text,
@@ -39,7 +40,6 @@ const TypewriterText = ({
 export default function OptimizedPortfolioHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentLine, setCurrentLine] = useState(0);
-  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const lines = [
     "Imagine a new web, minimalistic and creative.",
     "Innovative, aesthetic and useful.",
@@ -56,37 +56,32 @@ export default function OptimizedPortfolioHero() {
     "text-xl md:text-xl",
   ];
 
-  useEffect(() => {
-    if (currentLine >= lines.length) {
-      setIsAnimationComplete(true);
-    }
-  }, [currentLine, lines.length]);
-
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[90vh] min-h-[600px] overflow-y-auto p-4 md:p-8 z-0"
+      className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center p-4 md:p-8"
     >
-      <div className="absolute inset-0 flex flex-col items-start justify-center max-w-4xl mx-auto space-y-8 z-0">
+      <div className="max-w-4xl mx-auto">
         {lines.map((line, index) => (
-          <p key={index} className={`${lineClasses[index]} ${isAnimationComplete ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-            {line}
-          </p>
-        ))}
-      </div>
-
-      <div className="absolute inset-0 flex flex-col items-start justify-center max-w-4xl mx-auto space-y-8 z-10">
-        {lines.map((line, index) => (
-          <p key={index} className={lineClasses[index]}>
-            {index < currentLine ? (
+          <motion.div
+            key={index}
+            className={`${lineClasses[index]} mb-4 h-[1.2em] overflow-hidden`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: currentLine >= index ? 1 : 0, 
+              y: currentLine >= index ? 0 : 20 
+            }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            {currentLine > index ? (
               line
-            ) : index === currentLine ? (
+            ) : currentLine === index ? (
               <TypewriterText
                 text={line}
                 onComplete={() => setCurrentLine((prev) => prev + 1)}
               />
             ) : null}
-          </p>
+          </motion.div>
         ))}
       </div>
     </div>
