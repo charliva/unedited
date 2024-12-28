@@ -1,20 +1,17 @@
-'use client'
+"use client";
 
-import { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { ChevronLeft, ExternalLink } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 interface TimelineItem {
-  id: string
-  date: string
-  title: string
-  description: string
-  story: string
-  projectUrl: string
-  image: string
+  id: string;
+  date: string;
+  title: string;
+  description: string;
+  story: string;
+  projectUrl: string;
+  image: string;
 }
 
 const timelineItems: TimelineItem[] = [
@@ -25,24 +22,24 @@ const timelineItems: TimelineItem[] = [
     description: "A minimal portfolio built with Next.js and TailwindCSS",
     story: "Building a modern portfolio...",
     projectUrl: "/projects/posts/Unedited",
-    image: "/Unedited.png"
+    image: "/Unedited.png",
   },
   {
     id: "2",
-    date: "March 2024 - October 2024", 
+    date: "March 2024 - October 2024",
     title: "Bitless hosting dashboard",
     description: "Built a hosting dashboard for user management",
     story: "This was my first project!",
     projectUrl: "/projects/posts/Bitless",
-    image: "/Bitless.png"
+    image: "/Bitless.png",
   },
-]
+];
 
 export default function PortfolioLayout() {
   return (
     <div className="min-h-screen dark:text-white">
       <div className="max-w-7xl mx-auto px-4 py-20">
-        <motion.header 
+        <motion.header
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-20"
@@ -50,21 +47,22 @@ export default function PortfolioLayout() {
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Experience
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl">
-            A collection of my projects and experiences, hover over them to see more details.
+          <p className="text-lg text-primary/60 max-w-2xl font-semibold">
+            A collection of my projects and experiences, hover over them to see
+            more details.
           </p>
         </motion.header>
 
-        <motion.div 
+        <motion.div
           className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8"
           variants={{
             hidden: { opacity: 0 },
             show: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.2
-              }
-            }
+                staggerChildren: 0.2,
+              },
+            },
           }}
           initial="hidden"
           animate="show"
@@ -74,10 +72,10 @@ export default function PortfolioLayout() {
               key={item.id}
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                show: { opacity: 1, y: 0 }
+                show: { opacity: 1, y: 0 },
               }}
             >
-              <Link 
+              <Link
                 href={item.projectUrl}
                 className="group relative block overflow-hidden rounded-lg"
               >
@@ -103,9 +101,7 @@ export default function PortfolioLayout() {
                     <h2 className="text-2xl text-neutral-100 font-bold mb-2">
                       {item.title}
                     </h2>
-                    <p className="text-neutral-300">
-                      {item.description}
-                    </p>
+                    <p className="text-neutral-300">{item.description}</p>
                   </div>
                 </div>
               </Link>
@@ -114,5 +110,6 @@ export default function PortfolioLayout() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
+

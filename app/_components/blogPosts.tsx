@@ -41,8 +41,8 @@ function PostPreview({ post, index }: { post: PostData; index: number }) {
         <h2 className="text-2xl font-semibold mb-2 group-hover:dark:  text-gray-300 transition-colors">
           {post.title}
         </h2>
-        <p className="text-muted-foreground mb-1">By {post.author}</p>
-        <p className="text-sm text-muted-foreground">{post.date}</p>
+        <p className="text-muted-foreground font-semibold mb-1">By {post.author}</p>
+        <p className="text-sm text-muted-foreground font-semibold">{post.date}</p>
       </Link>
     </motion.article>
   );

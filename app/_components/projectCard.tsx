@@ -38,7 +38,7 @@ export function ProjectCard({
       <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
         {title}
       </h3>
-      <p className="text-sm text-muted-foreground">{description}</p>
+      <p className="text-sm text-muted-foreground font-semibold">{description}</p>
     </Link>
   );
 }
