@@ -29,6 +29,9 @@ const TypewriterText = ({
   return (
     <span className="inline-block text-foreground">
       {displayText}
+      {displayText.length < text.length && (
+        <span className="animate-pulse">|</span>
+      )}
     </span>
   );
 };
