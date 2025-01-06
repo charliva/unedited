@@ -2,6 +2,7 @@ import HeroSection from "./_components/hero-section";
 import { ServiceCard } from "./_components/homepageSections";
 import { ProjectCard } from "./_components/projectCard";
 import { BlogCard } from "./_components/blogSection";
+import Background from "./_components/background";
 
 const posts = [
   {
@@ -64,7 +65,7 @@ const services = [
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div>
+      <div className="relative">
         <HeroSection />
       </div>
       <div className="flex items-center justify-center min-h-[50vh] py-20">

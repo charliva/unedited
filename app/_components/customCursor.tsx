@@ -9,7 +9,6 @@ const CustomCursor: React.FC = () => {
   const { isHovering } = useCursor()
 
   useEffect(() => {
-    // Check if device is mobile
     const checkMobile = () => {
       setIsMobile(window.matchMedia('(pointer: coarse)').matches)
     }
@@ -17,7 +16,6 @@ const CustomCursor: React.FC = () => {
     checkMobile()
     window.addEventListener('resize', checkMobile)
 
-    // Only add mouse tracking and custom cursor if not mobile
     if (!isMobile) {
       const updateMousePosition = (e: MouseEvent) => {
         setMousePosition({ x: e.clientX, y: e.clientY })
@@ -54,7 +52,7 @@ const CustomCursor: React.FC = () => {
     top: mousePosition.y - (isHovering ? 9 : 9),
     zIndex: 200,
     backgroundColor: isHovering ? 'rgba(255, 255, 255, 0.2)' : 'white',
-    border: isHovering ? '4px solid white' : '4px solid black',
+    border: isHovering ? '2px solid white' : '2px solid black',
     mixBlendMode: 'difference' as 'difference',
   }
 

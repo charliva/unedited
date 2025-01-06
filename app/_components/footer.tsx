@@ -14,20 +14,20 @@ export default function Footer() {
           <div className="flex flex-col gap-1">
             <Link 
               href="/" 
-              className="font-mono text-xl font-bold text-gray-600 hover:text-primary transition-colors"
+              className="font-mono text-xl font-bold hover:text-primary"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               aria-label={"Logo and link to homepage"}
             >
               UNEDITED
             </Link>
-            <p className="text-sm text-gray-600 font-semibold">
+            <p className="text-sm font-semibold">
               Crafting digital experiences that speak volumes with less.
             </p>
           </div>
         </div>
         <div className="border-t border-gray-200 py-4">
-          <div className="flex justify-between items-center text-sm text-gray-500">
+          <div className="flex justify-between items-center text-sm">
             <p className="font-semibold">© {new Date().getFullYear()} UNEDITED. Simple. Elegant. Effective.</p>
             <div className="flex gap-4">
                 {[
@@ -40,7 +40,7 @@ export default function Footer() {
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="hover:text-gray-600 transition-colors font-semibold"
+                  className="font-semibold"
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                   aria-label={item.label}

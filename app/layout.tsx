@@ -5,6 +5,7 @@ import NavBar from "./_components/navBar";
 import { CursorProvider } from "./_components/cursorContext";
 import CustomCursor from "./_components/customCursor";
 import Footer from "./_components/footer";
+import Background from "./_components/background";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
         <CursorProvider>
           <CustomCursor />
           <NavBar />
-          <main className="p-6">{children}</main>
+          <main>{children}</main>
           <Footer />
         </CursorProvider>
       </body>

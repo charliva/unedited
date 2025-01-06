@@ -1,80 +1,116 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
+import LoadingScreen from "./LoadingScreen";
 
-const TypewriterText = ({
-  text,
-  onComplete,
-}: {
+interface LineConfig {
   text: string;
-  onComplete?: () => void;
-}) => {
-  const [displayText, setDisplayText] = useState("");
+  delay: number;
+  gradient: string;
+}
+
+const LINES: LineConfig[] = [
+  {
+    text: "Imagine a new web, minimalistic and creative.",
+    delay: 1500,
+    gradient: "from-purple-300/80 to-pink-300/80"
+  },
+  {
+    text: "Innovative, aesthetic and useful.",
+    delay: 1500,
+    gradient: "from-blue-300/80 to-green-300/80"
+  },
+  {
+    text: "Where every pixel has a purpose.",
+    delay: 1300,
+    gradient: "from-yellow-300/80 to-red-300/80"
+  },
+  {
+    text: "Simple. Elegant. Effective.",
+    delay: 1000,
+    gradient: "from-indigo-300/80 to-purple-300/80"
+  }
+];
+
+const GradientBackground = ({ gradient, isActive }: { gradient: string; isActive: boolean }) => (
+  <div 
+    className={`
+      absolute inset-0 
+      grid place-items-center 
+      transition-all duration-1000 ease-in-out
+      ${isActive ? 'opacity-100' : 'opacity-0'}
+    `}
+  >
+    <div 
+      className={`
+        w-[300px] h-[300px] md:w-[400px] md:h-[400px]
+        bg-gradient-to-r ${gradient}
+        opacity-30
+        blur-[60px]
+        transform scale-100
+        transition-all duration-700 ease-in-out
+        animate-subtle-pulse
+      `}
+    />
+  </div>
+);
+
+function PortfolioHeroContent() {
+  const [currentLine, setCurrentLine] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      if (currentIndex <= text.length) {
-        setDisplayText(text.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(interval);
-        if (onComplete) onComplete();
-      }
-    }, 50);
+    // Ensure DOM is ready before showing gradients
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [text, onComplete]);
+  const handleLineComplete = useCallback(() => {
+    if (currentLine === LINES.length - 1) {
+      setTimeout(() => setIsComplete(true), 1000);
+    } else {
+      setTimeout(
+        () => setCurrentLine((prev) => prev + 1),
+        LINES[currentLine].delay
+      );
+    }
+  }, [currentLine]);
 
-  return (
-    <span className="inline-block text-foreground">
-      {displayText}
-      {displayText.length < text.length && (
-        <span className="animate-pulse">|</span>
-      )}
-    </span>
-  );
-};
-
-export default function PortfolioHero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [currentLine, setCurrentLine] = useState(0);
-  const lines = [
-    "Imagine a new web, minimalistic and creative.",
-    "Innovative, aesthetic and useful.",
-    "Crafting digital experiences that speak volumes with less.",
-    "Where every pixel has a purpose.",
-    "Simple. Elegant. Effective.",
-  ];
-
-  const lineClasses = [
-    "text-4xl md:text-5xl lg:text-6xl font-bold",
-    "text-2xl md:text-3xl",
-    "text-xl md:text-2xl",
-    "text-xl md:text-2xl",
-    "text-xl md:text-xl",
-  ];
+  useEffect(() => {
+    if (!isComplete) {
+      handleLineComplete();
+    }
+  }, [currentLine, isComplete, handleLineComplete]);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full h-[90vh] min-h-[600px] overflow-y-auto p-4 md:p-8 z-0"
-    >
-      <div className="absolute inset-0 flex flex-col items-start justify-center max-w-4xl mx-auto space-y-8 z-0">
-        {lines.map((line, index) => (
-          <p key={index} className={lineClasses[index]}>
-            {index < currentLine ? (
-              line
-            ) : index === currentLine ? (
-              <TypewriterText
-                text={line}
-                onComplete={() => setCurrentLine((prev) => prev + 1)}
-              />
-            ) : null}
+    <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      {LINES.map((line, index) => (
+        isLoaded && (
+          <GradientBackground 
+            key={index}
+            gradient={line.gradient}
+            isActive={currentLine === index && !isComplete}
+          />
+        )
+      ))}
+      <div className="relative z-10 text-center">
+        {!isComplete ? (
+          <p className="text-xl md:text-2xl lg:text-3xl mb-4 font-mono font-bold">
+            {LINES[currentLine].text}
           </p>
-        ))}
+        ) : (
+          <p className="text-5xl font-mono font-bold">Unedited</p>
+        )}
       </div>
     </div>
   );
 }
 
+export default function PortfolioHero() {
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <PortfolioHeroContent />
+    </Suspense>
+  );
+}
