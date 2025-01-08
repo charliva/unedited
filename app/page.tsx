@@ -11,7 +11,7 @@ const posts = [
     description:
       "Exploring the origins, benefits, and principles of minimalist design",
     date: "December 25th 2024",
-    blogUrl: "/blog/minimalist-case-study",
+    blogUrl: "https://blog.unedited.site/minimalism",
   },
 ];
 

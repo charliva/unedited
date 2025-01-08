@@ -31,19 +31,17 @@ function AnimatedLogo() {
       let rippleTimeout: NodeJS.Timeout;
       const startRippleEffect = (currentIndex: number) => {
         const distance = Math.abs(currentIndex - index);
-        const delay = distance * 50; // 50ms delay per character distance
+        const delay = distance * 60; 
 
         rippleTimeout = setTimeout(() => {
           setRippleIndices((prev) => [...prev, currentIndex]);
           setTimeout(() => {
             setRippleIndices((prev) => prev.filter((i) => i !== currentIndex));
-          }, 150); // Duration of the special character display
+          }, 160); 
         }, delay);
       };
 
-      // Clear any existing ripples
       setRippleIndices([]);
-      // Start ripple effect in both directions
       for (let i = 0; i < letters.length; i++) {
         startRippleEffect(i);
       }
@@ -92,7 +90,7 @@ export default function NavBar() {
   const menuItems = [
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
-    { href: "/blog", label: "Blog" },
+    { href: "https://blog.unedited.site/", label: "Blog" },
     { href: "/experience", label: "Experience" },
   ];
 
