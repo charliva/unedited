@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Projects",
-  description: "Unedited - projects",
+  title: "Privacy",
+  description: "Privacy @ Unedited",
   keywords: ["Unedited", "Web developer", "App developer"],
   icons: {
     icon: "favicon.ico",
