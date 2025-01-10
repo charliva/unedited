@@ -1,6 +1,6 @@
 "use client";
 
-import { type LucideIcon, Globe, Smartphone, Code2, Palette, HardDrive } from 'lucide-react';
+import { TypeIcon as type, type LucideIcon, Globe, Smartphone, Code2, Palette, HardDrive } from 'lucide-react';
 import { motion } from "motion/react";
 
 interface ServiceCardProps {
@@ -26,17 +26,23 @@ export function ServiceCard({
 
   return (
     <motion.div
-      className="p-6 rounded-lg backdrop-blur-xl bg-white/10 border border-white/20 shadow-lg hover:shadow-xl hover:bg-white/15"
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.2 }}
+      className="group relative p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/40"
+      whileHover={{ 
+        y: -4,
+        transition: { 
+          duration: 0.3,
+          ease: [0.2, 0, 0, 1]
+        }
+      }}
     >
       <div className="flex flex-col items-start space-y-4">
-        <div className="p-3 rounded-full bg-secondary/30 backdrop-blur-sm">
-          <Icon className="w-6 h-6 font-primary" />
+        <div className="p-3 rounded-xl bg-white/80 shadow-sm">
+          <Icon className="w-5 h-5 text-gray-900" strokeWidth={1.5} />
         </div>
-        <h3 className="text-xl font-bold text-primary">{title}</h3>
-        <p className="text-muted-foreground dark:text-neutral-400">{description}</p>
+        <h3 className="text-base font-medium text-gray-900">{title}</h3>
+        <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
       </div>
     </motion.div>
   );
 }
+
