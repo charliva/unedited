@@ -17,6 +17,7 @@ import {
 } from "@radix-ui/react-icons";
 import type { IconProps } from "@radix-ui/react-icons/dist/types";
 import Link from "next/link";
+import { useCursor } from "./cursorContext";
 
 const beVietnamPro = Be_Vietnam_Pro({
   weight: ["400", "700"],
@@ -39,7 +40,7 @@ const timeline: TimelineItem[] = [
   { year: "2014", event: "Started coding at age 5" },
   { year: "2019", event: "Began learning web development" },
   { year: "2023", event: "Started freelancing" },
-  { year: "2023", event: "Mastered Next.js and Tailwind CSS" },
+  { year: "2023", event: "Began working with advanced web technologies" },
 ];
 
 const skills: Skill[] = [
@@ -52,6 +53,7 @@ const skills: Skill[] = [
 ];
 
 export default function AboutMe() {
+  const { setIsHovering } = useCursor();
   return (
     <div className="container mx-auto px-4 py-8">
       <motion.div
@@ -167,7 +169,7 @@ export default function AboutMe() {
                 <span>Links</span>
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                <Link href="mailto:charlie@unedited.site?&subject=Work together&body=Hello Charlie, I would like to work with you on a project.">
+                <Link href="mailto:charlie@unedited.site?&subject=Work together&body=Hello Charlie, I would like to work with you on a project." onMouseEnter={() => {setIsHovering(true)}} onMouseLeave={() => {setIsHovering(false)}} onClick={() => {setIsHovering(false)}}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     className="flex flex-col items-center justify-center p-2 rounded-lg bg-secondary/10 dark:bg-secondary/5"
@@ -177,7 +179,7 @@ export default function AboutMe() {
                   </motion.div>
                 </Link>
 
-                <Link href="https://www.github.com/charliva">
+                <Link href="https://www.github.com/charliva" onMouseEnter={() => {setIsHovering(true)}} onMouseLeave={() => {setIsHovering(false)}} onClick={() => {setIsHovering(false)}}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     className="flex flex-col items-center justify-center p-2 rounded-lg bg-secondary/10 dark:bg-secondary/5"

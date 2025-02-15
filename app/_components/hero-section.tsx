@@ -68,7 +68,7 @@ const ScrollIndicator = () => {
       })}
     >
       <motion.p 
-        className="text-sm text-gray-500 font-medium text-center"
+        className="text-sm text-gray-300 font-medium text-center"
         animate={{ opacity: [0.5, 1, 0.5] }}
         transition={{
           duration: 2,
@@ -88,7 +88,7 @@ const ScrollIndicator = () => {
           ease: "easeInOut"
         }}
       >
-        <ChevronDown className="w-5 h-5 text-gray-500" strokeWidth={1.5} />
+        <ChevronDown className="w-5 h-5 text-gray-300" strokeWidth={1.5} />
       </motion.div>
     </motion.div>
   );
@@ -144,7 +144,7 @@ function PortfolioHeroContent() {
               {LINES.slice(0, currentLine).map((line, index) => (
                 <motion.p
                   key={index}
-                  className="text-lg md:text-xl lg:text-2xl mb-2 font-mono text-gray-500"
+                  className="text-lg md:text-xl lg:text-2xl mb-2 font-mono text-gray-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
@@ -165,8 +165,6 @@ function PortfolioHeroContent() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
             >
               Unedited
             </motion.p>

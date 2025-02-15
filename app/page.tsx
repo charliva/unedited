@@ -62,7 +62,7 @@ export default function Home() {
       <HeroSection />
       <div className="max-w-7xl mx-auto px-6 py-16 sm:py-24 space-y-32">
         <section>
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-12 text-center">
+          <h2 className="text-2xl font-semibold tracking-tight mb-12 text-center">
             What I Do
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -72,7 +72,7 @@ export default function Home() {
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-12 text-center">
+          <h2 className="text-2xl font-semibold tracking-tight mb-12 text-center">
             Latest Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -82,7 +82,7 @@ export default function Home() {
           </div>
         </section>
         <section>
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-12 text-center">
+          <h2 className="text-2xl font-semibold tracking-tight mb-12 text-center">
             Latest Blog Posts
           </h2>
           <div className="grid grid-cols-1 gap-6">

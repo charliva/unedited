@@ -91,7 +91,6 @@ export default function NavBar() {
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
     { href: "https://blog.unedited.site/", label: "Blog" },
-    { href: "/experience", label: "Experience" },
   ];
 
   useEffect(() => {
@@ -106,7 +105,7 @@ export default function NavBar() {
   }, [isOpen]);
 
   return (
-    <nav className="fixed mb-6 top-4 left-1/2 transform -translate-x-1/2 mr-8 gap-8 max-w-2xl flex items-center justify-between px-6 py-2 z-50 bg-gradient-to-b from-purple-100/40 to-transparent backdrop-blur-[4px] border-[1.5px] border-neutral-300/40 rounded-2xl shadow-sm">
+    <nav className="fixed mb-4 top-4 left-1/2 transform -translate-x-1/2 mr-8 gap-8 max-w-2xl flex items-center justify-between px-6 py-2 z-50 bg-gradient-to-b from-purple-100/40 to-transparent backdrop-blur-[4px] border-[1.5px] border-foreground rounded-2xl shadow-sm">
       <AnimatedLogo />
       <div className="hidden md:flex space-x-6">
         {menuItems.map((item) => (
